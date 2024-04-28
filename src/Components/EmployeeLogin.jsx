@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './style.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -16,7 +16,7 @@ function EmployeeLogin() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8081/employeelogin', values)
+        axios.post('https://localhost:7036/api/employeelogin', values)
         .then(res => {
             if(res.data.Status === 'Success') {
                 const id = res.data.id;

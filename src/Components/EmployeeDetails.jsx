@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function EmployeeDetail() {
@@ -7,12 +7,12 @@ function EmployeeDetail() {
     const navigate = useNavigate()
     const [employee, setEmployee] = useState([])
     useEffect(()=> {
-        axios.get('http://localhost:8081/get/'+id)
+        axios.get('https://localhost:7036/api/get/'+id)
         .then(res => setEmployee(res.data.Result[0]))
         .catch(err => console.log(err));
     })
     const handleLogout = () => {
-		axios.get('http://localhost:8081/logout')
+		axios.get('https://localhost:7036/api/logout')
 		.then(res => {
 			navigate('/start')
 		}).catch(err => console.log(err));
@@ -20,7 +20,7 @@ function EmployeeDetail() {
   return (
     <div>
         <div className='d-flex justify-content-center flex-column align-items-center mt-3'>
-            <img src={`http://localhost:8081/images/`+employee.image} alt="" className='empImg'/>
+            <img src={`api/images/`+employee.image} alt="" className='empImg'/>
             <div className='d-flex align-items-center flex-column mt-5'>
                 <h3>Name: {employee.name}</h3>
                 <h3>Email: {employee.email}</h3>

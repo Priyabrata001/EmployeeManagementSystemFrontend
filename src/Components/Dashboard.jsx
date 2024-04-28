@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -56,7 +56,7 @@ function Dashboard() {
 						</ul>
 					</div>
 				</div>
-				<div class="col p-0 m-0">
+				<div className="col p-0 m-0">
 					<div className='p-2 d-flex justify-content-center shadow'>
 						<h4>Employee Management System</h4>						
 					</div>

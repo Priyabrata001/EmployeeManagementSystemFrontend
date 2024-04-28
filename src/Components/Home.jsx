@@ -1,26 +1,28 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Home() {
   const [adminCount, setAdminCount] = useState()
   const [employeeCount, setEmployeeCount] = useState()
   const [salary, setSalary] = useState()
-
+  
   useEffect(() => {
-    axios.get('http://localhost:8081/adminCount')
+    axios.get('https://localhost:7036/api/adminCount')
 		.then(res => {
 			setAdminCount(res.data[0].admin)
 		}).catch(err => console.log(err));
 
-    axios.get('http://localhost:8081/employeeCount')
+    axios.get('https://localhost:7036/api/employeeCount')
 		.then(res => {
 			setEmployeeCount(res.data[0].employee)
 		}).catch(err => console.log(err));
 
-    axios.get('http://localhost:8081/salary')
+    axios.get('http://localhost:7036/api/salary')
 		.then(res => {
 			setSalary(res.data[0].sumOfSalary)
-		}).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+    
+    
 
   } , [])
   return (
@@ -74,6 +76,7 @@ function Home() {
         </table>
       </div>
     </div>
+    
   )
 }
 

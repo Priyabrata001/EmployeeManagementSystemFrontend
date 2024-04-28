@@ -1,12 +1,12 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Employee() {
   const [data, setData] = useState([])
 
   useEffect(()=> {
-    axios.get('http://localhost:8081/getEmployee')
+    axios.get('api/getEmployee')
     .then(res => {
       if(res.data.Status === "Success") {
         setData(res.data.Result);
@@ -18,7 +18,7 @@ function Employee() {
   }, [])
 
   const handleDelete = (id) => {
-    axios.delete('http://localhost:8081/delete/'+id)
+    axios.delete('https://localhost:7036/api/delete/'+id)
     .then(res => {
       if(res.data.Status === "Success") {
         window.location.reload(true);
@@ -59,7 +59,7 @@ function Employee() {
                   <td>{employee.salary}</td>
                   <td>
                     <Link to={`/employeeEdit/`+employee.id} className='btn btn-primary btn-sm me-2'>edit</Link>
-                    <button onClick={e => handleDelete(employee.id)} className='btn btn-sm btn-danger'>delete</button>
+                    <button onClick={()=> handleDelete(employee.id)} className='btn btn-sm btn-danger'>delete</button>
                   </td>
               </tr>
             })}
